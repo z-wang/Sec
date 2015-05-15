@@ -1,0 +1,2 @@
+secview:
+shift-F3: change case, captical, lower, camal
