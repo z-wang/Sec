@@ -1,0 +1,39 @@
+#include <cstdio>
+
+struct rec
+{
+  char *str;
+  int val;
+  char buf[16 - sizeof (char *) - sizeof (int)];
+} arr[512];
+constexpr int narr = sizeof (arr) / sizeof (arr[0]);
+
+
+int main()
+{
+  for (rec &r : arr)
+    r.str = r.buf;
+
+  for (int i = 0; i < 10000; ++i)
+    sprintf (arr[i % narr].str, "%d", arr[i % narr].val = i);
+}
+
+
+void print_rec(rec& r) {
+  printf("str = %p (%s)\nval = %d\nbuf = %*s\n",
+         r.str, r.str, r.val, int(16 - sizeof (char *) - sizeof (int)), r.buf);
+}
+
+
+
+save as a file crash1.cc
+
+>g++ -std=c++11 -g -o crash1-1989 crash1.cc
+>./crash1-1989
+Segmentation fault
+>dmesg|tail|grep crash1-1989
+[960260.501781] crash1-1989[454]: segfault at 35313031 ip 00000030bfe74927 sp 00007fffc23e2170 error 6 in libc-2.12.so[30bfe00000+18a000]
+
+i pointer, stack pointer: 
+error 6: type of error
+
