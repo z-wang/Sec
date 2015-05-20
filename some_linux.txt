@@ -1,3 +1,5 @@
+ssh student7@aldebaran.etc.test.gs.com redhat
+
 #include <cstdio>
 
 struct rec
