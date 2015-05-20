@@ -37,3 +37,5 @@ Segmentation fault
 i pointer, stack pointer: 
 error 6: type of error
 
+>catchsegv ./crash1-1989;
+
