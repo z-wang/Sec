@@ -1,0 +1,183 @@
+1. check the gns subscription:
+gns [options] ls /hosts/${HOSTNAME} [options]
+gns ls /hosts/d164453-006.dc.gs.com
+
+
+/hosts/d164453-006.dc.gs.com:
+              object type: host
+                  os spec: /linux/x86_64/rhel/6/4/standard/3
+                  creator: dcadm
+               created on: 2015-06-01T19:58:00.809000
+              modified on: 2015-06-01T19:58:01.346000
+              description: Dynamic Computing Host: d164453-006.dc.gs.com
+              maintainers: inherited from /hosts
+                         : smtp:gs-gns-dev@gs.com
+
+                member of: /host-groups/default_host_group
+
+            subscriptions: (last checked: 2015-06-03T15:07:23.364000)
+                   direct: /package-groups/imd/imdstrat/core-strats/jsqsh/jsqsh
+                   direct: /package-groups/infra/aim/caas/caas-dev
+                   direct: /package-groups/infra/aim/gsappengine/gsappengine-prod
+                   direct: /package-groups/infra/dc/dcclientsupport
+
+
+2. if want to find out details for each sub, need the info for os specs:
+>gns info
+
+GNS Information:
+              cli version: 3.8.3
+           server version: 2.10.4
+                 instance: prod
+
+  def. archive size limit: 2097152 (KiB)
+      registered os specs: /linux/x86_64/rhel/5/3
+                         : /linux/x86_64/rhel/5/5
+                         : /linux/x86_64/rhel/6/1/lowlatency/2
+                         : /linux/x86_64/rhel/6/1/standard/2
+                         : /linux/x86_64/rhel/6/2/standard/1
+                         : /linux/x86_64/rhel/6/2/standard/2
+                         : /linux/x86_64/rhel/6/2/standard/3
+                         : /linux/x86_64/rhel/6/3/lowlatency/1
+                         : /linux/x86_64/rhel/6/3/standard/1
+                         : /linux/x86_64/rhel/6/3/standard/2
+                         : /linux/x86_64/rhel/6/3/standard/3
+                         : /linux/x86_64/rhel/6/4/standard/0
+                         : /linux/x86_64/rhel/6/4/standard/1
+                         : /linux/x86_64/rhel/6/4/standard/2
+                         : /linux/x86_64/rhel/6/4/standard/3
+                         : /linux/x86_64/rhel/6/5/standard/0
+                         : /linux/x86_64/rhel/6/5/standard/1
+                         : /linux/x86_64/rhel/7
+                         : /solaris/x86_64/10
+
+
+Then, use advanced gns ls command to find out detail:
+
+> gns ls /hosts/d164453-006.dc.gs.com -s /linux/x86_64/rhel/6/1/standard/2
+/hosts/d164453-006.dc.gs.com:
+              object type: host
+                  os spec: /linux/x86_64/rhel/6/4/standard/3
+                  creator: dcadm
+               created on: 2015-06-01T19:58:00.809000
+              modified on: 2015-06-01T19:58:01.346000
+              description: Dynamic Computing Host: d164453-006.dc.gs.com
+              maintainers: inherited from /hosts
+                         : smtp:gs-gns-dev@gs.com
+
+                member of: /host-groups/default_host_group
+
+            subscriptions: (os spec = /linux/x86_64/rhel/6/1/standard/2, last checked: 2015-06-03T15:33:54.523000)
+                   direct: /package-groups/imd/imdstrat/core-strats/jsqsh/jsqsh
+                   direct: /package-groups/infra/aim/caas/caas-dev
+                   direct: /package-groups/infra/aim/gsappengine/gsappengine-prod
+                   direct: /package-groups/infra/dc/dcclientsupport
+               transitive: /gns/mw/dbclient/ibm/DB2Client-V97FP05.v01
+               transitive: /gns/mw/dbclient/sybase/iq/iqclient-16.0.0.23001.sp08.64b.v01
+               transitive: /gns/mw/java/64bit/oracle/hotspot/jdk-1.7.0_02-20141022
+               transitive: /gns/mw/lang/c/openssl-1.0.0-20.el5.gns.gs1
+               transitive: /gns/mw/lang/c/zeromq-4.0.1
+               transitive: /gns/mw/lang/erlang/Erlang-R16B01-11
+               transitive: /gns/mw/lang/perl/perl-5.10-3
+
+3. gns ls /gns/mw/search/elasticsearch
+package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.2_gs1 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.2_gs1-RC1 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.2_gs1-RC2 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.2_gs1-RC3 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.2_gs2
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.2_gs2-RC1 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.2_gs2-RC2 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.4_gs1
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.4_gs1-RC1 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.4_gs1-RC2 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.4_gs1-RC3 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.4_gs1-RC4 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.4.4_gs1-RC5 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.5.1_gs1-RC1 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1-RC1 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1-RC2 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1-RC3 (dep)
+          package-version: /gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1-RC4
+            version-alias: /gns/mw/search/elasticsearch/gselasticsearch-prod
+            version-alias: /gns/mw/search/elasticsearch/gselasticsearch-test
+                  package: /gns/mw/search/elasticsearch/gselasticsearch:
+          package-version: /gns/mw/search/elasticsearch/gseshadoop-2.1.0-14-20141020
+          package-version: /gns/mw/search/elasticsearch/gseshadoop-2.1.0-19-20150417
+                  package: /gns/mw/search/elasticsearch/gseshadoop:
+          package-version: /gns/mw/search/elasticsearch/gsesmon-1.2.0
+          package-version: /gns/mw/search/elasticsearch/gsesmon-1.3.0
+          package-version: /gns/mw/search/elasticsearch/gsesmon-1.4.0
+          package-version: /gns/mw/search/elasticsearch/gsesmon-1.4.0-RC1
+          package-version: /gns/mw/search/elasticsearch/gsesmon-1.5.0
+          package-version: /gns/mw/search/elasticsearch/gsesmon-1.5.0-RC1
+            version-alias: /gns/mw/search/elasticsearch/gsesmon-prod-current
+            version-alias: /gns/mw/search/elasticsearch/gsesmon-prod-prev
+            version-alias: /gns/mw/search/elasticsearch/gsesmon-test
+                  package: /gns/mw/search/elasticsearch/gsesmon:
+          package-version: /gns/mw/search/elasticsearch/gsesrecon-1.0.0
+            version-alias: /gns/mw/search/elasticsearch/gsesrecon-test
+                  package: /gns/mw/search/elasticsearch/gsesrecon:
+            version-alias: /gns/mw/search/elasticsearch/kibana-3.0.0
+          package-version: /gns/mw/search/elasticsearch/kibana-3.0.0_gns1
+            version-alias: /gns/mw/search/elasticsearch/kibana-3.0.0milestone4 (dep)
+          package-version: /gns/mw/search/elasticsearch/kibana-3.0.0milestone4_gns1 (dep)
+            version-alias: /gns/mw/search/elasticsearch/kibana-3.0.0milestone5 (dep)
+          package-version: /gns/mw/search/elasticsearch/kibana-3.0.0milestone5_gns1 (dep)
+            version-alias: /gns/mw/search/elasticsearch/kibana-3.0.1
+          package-version: /gns/mw/search/elasticsearch/kibana-3.0.1_gns1
+            version-alias: /gns/mw/search/elasticsearch/kibana-3.1.0
+          package-version: /gns/mw/search/elasticsearch/kibana-3.1.0_gns1
+          package-version: /gns/mw/search/elasticsearch/kibana-3.1.0_gns2
+                  package: /gns/mw/search/elasticsearch/kibana:
+                  
+                  
+                  !!use elasticsearch, kibana, esmon,eshadoop
+
+4. before subscrib, check dependence,
+ gns ls /gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1 -b
+/gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1:
+              object type: package-version
+                     name: gselasticsearch
+                  version: 1.5.2_gs1
+                  creator: gdeploy
+               created on: 2015-05-14T03:17:58.039000
+              modified on: 2015-05-14T03:22:04.694000
+            is deprecated: False
+               is retired: False
+              description: auto-generated by area2gns when promoting the following AREA build (PPRB): com.gs.bigdata:gselasticsearch:1.5.2_gs1:FINAL (production)
+              maintainers: defined directly
+                         : smtp:gs-apg-csf-support@gs.com
+  subscriber restrictions: (none)
+   dependent restrictions: (none)
+                is public: True
+
+         package archives:
+       distinguished name: /gns/mw/search/elasticsearch/gselasticsearch-1.5.2_gs1:/linux/x86_64/rhel/6
+                  os spec: /linux/x86_64/rhel/6
+             available on: /linux/x86_64/rhel/6
+                     size: 139533 KiB
+            is deprecated: False
+               is retired: False
+             dependencies: /gns/mw/lang/python/modules/2.7.2/kerberos-1.1.1-gs1
+                         : /gns/mw/lang/python/modules/2.7.2/setuptools-14.0
+                         : /gns/mw/lang/python/modules/2.7.2/urllib2_kerberos-0.1.6-gs1
+
+
+5. find
+Find all objects with 'java' in their description
+$ gns find -k java
+
+Find all package groups with 'java' in their name
+$ gns find -t package-group -n java
+
+6. find node status: 
+/gns/software/gns/constructor-current/bin/tree status
+is the gns tree status and will use UTC time
+
+gns query get-status --host gns-client.gs.com --timestamp 201307032200
+ Find a host's status as of 2200 UTC on July 3, 2013.
+ 
+gns query get-subscriptions -h
+
