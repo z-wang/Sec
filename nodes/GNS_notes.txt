@@ -181,3 +181,15 @@ gns query get-status --host gns-client.gs.com --timestamp 201307032200
  
 gns query get-subscriptions -h
 
+
+6. 
+Groups
+Usage: gns [options] modify package-group /package-groups/path/to/package_group [options]
+Usage: gns [options] modify host-group /host-groups/path/to/host_group [options]
+Usage: gns [options] modify depot-group /depot-groups/path/to/depot_group [options]
+Usage: gns [options] modify principal-group /principal-groups/path/to/principal_group [options]
+Add a member
+Add a package-version to a package-group
+$ gns modify package-group /package-groups/my_bu/my_zone/my_pkg_group --add-member /gns/path/to/pkg-1.0 
+Add a host to a host-group
+$ gns modify host-group /host-groups/my_bu/my_zone/my_host_group --add-member foobar.ny.fw.gs.com
