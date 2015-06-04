@@ -1,3 +1,40 @@
+0. Environment
+
+[edit] Shell PATH
+Add the host constructor and CLI to your PATH:
+ $ export PATH=/gns/software/gns/gns.cli-prod/bin:/gns/software/gns/constructor-current/bin:${PATH}: 
+[edit] Aliases
+If you run "gns ls" and "gns find" frequently alias them to "gls" and "gfind"
+$ alias gls="/gns/software/gns/gns.cli-prod/bin/gns ls"
+alias gfind="/gns/software/gns/gns.cli-prod/bin/gns find"
+Linux has a built-in tree command in /usr/bin/tree so if you run the GNS tree command frequently you should set up an alias, such as gnstree
+$ alias gnstree="/gns/software/gns/constructor-current/bin/tree"
+[edit] Working with data
+If you run the CLI by itself you get an interactive prompt where you can run individual commands:
+$ /gns/software/gns/gns.cli-prod/bin/gns
+GNS: americas > ls /gns
+/gns:
+              object type: zone
+                  creator: unix:gns
+               created on: 2011-05-16T18:44:33.456000
+              modified on: 2012-10-22T20:42:36.330000
+            is deprecated: False
+               is retired: False
+              description: Root GNS Zone
+              maintainers: inherited from / (none)
+  subscriber restrictions: (none)
+   dependent restrictions: (none)
+
+                 children: (dep = deprecated, retired not shown)
+                     zone: /gns/appdata
+                     zone: /gns/mw
+                     zone: /gns/software
+                     zone: /gns/special
+You can run the same command but prefixed with the CLI executable then pipe that as you would any other shell command.
+ $ /gns/software/gns/gns.cli-prod/bin/gns ls /gns | grep description
+              description: Root GNS Zone
+Some of the CLI output can be long, such as $ gns ls /hosts which lists all hosts registered in GNS. If you're going to be parsing it more than once in a session you should save it to a file so you don't have to run the gns ls command repeatedly.
+
 1. check the gns subscription:
 gns [options] ls /hosts/${HOSTNAME} [options]
 gns ls /hosts/d164453-006.dc.gs.com
